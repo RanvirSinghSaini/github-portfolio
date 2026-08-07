@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Ranvir Singh — SOC Analyst // 3D Portfolio</title>
+<meta name="description" content="Ranvir Singh — Cybersecurity & SOC Analyst. CompTIA Security+. Mississauga, ON. A fully 3D interactive portfolio."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css?v=4"/>
+</head>
+<body>
+
+<!-- ============ LOADER ============ -->
+<div id="loader">
+  <!-- phase 1: critical breach alert -->
+  <div class="breach" id="breach">
+    <div class="breach-scan"></div>
+    <div class="breach-core">
+      <div class="breach-siren" id="breachSiren">▲</div>
+      <div class="breach-level">THREAT LEVEL — <span>CRITICAL</span></div>
+      <h1 class="breach-title" id="breachTitle"><span>BREACH</span><span>DETECTED</span></h1>
+      <div class="breach-meta">
+        <span>SRC <b id="bSrc">185.220.101.44</b></span>
+        <span>VECTOR <b>UNAUTHORIZED ACCESS</b></span>
+        <span>NODE <b>RS-SOC-01</b></span>
+      </div>
+      <div class="breach-log" id="breachLog"></div>
+      <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+      <div class="loader-status" id="loaderStatus">initializing containment…</div>
+      <button class="breach-btn" id="breachBtn">▣ INITIATE CONTAINMENT</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 3D WORLD ============ -->
+<canvas id="world"></canvas>
+
+<!-- ============ HUD FRAME ============ -->
+<div class="hud" aria-hidden="true">
+  <span class="hud-corner tl"></span><span class="hud-corner tr"></span>
+  <span class="hud-corner bl"></span><span class="hud-corner br"></span>
+  <div class="hud-top">
+    <span class="hud-id">RANVIR&nbsp;SINGH</span>
+    <span class="hud-sep">//</span>
+    <span class="hud-role">SOC&nbsp;ANALYST</span>
+    <span class="hud-status" id="hudThreat"><i></i>LINK&nbsp;SECURE</span>
+    <button class="hud-snd" id="sndBtn" aria-label="Toggle ambient sound">SND&nbsp;OFF</button>
+    <button id="motBtn" aria-label="Toggle motion" style="display:none"></button>
+  </div>
+  <div class="hud-bottom">
+    <span id="hudCoord">CAM 0.000 / 0.000 / 0.000</span>
+    <span id="hudScore">THREATS NEUTRALIZED — 0</span>
+    <span id="hudSection">SECTOR 01 — ENTRY</span>
+  </div>
+</div>
+
+<!-- ============ NAV RAIL ============ -->
+<nav class="rail" id="rail" aria-label="Sections">
+  <button data-stop="0" class="active"><span>Entry</span></button>
+  <button data-stop="1"><span>Operator</span></button>
+  <button data-stop="2"><span>Threat&nbsp;Grid</span></button>
+  <button data-stop="3"><span>Skills</span></button>
+  <button data-stop="4"><span>Experience</span></button>
+  <button data-stop="5"><span>Operations</span></button>
+  <button data-stop="6"><span>Clearance</span></button>
+  <button data-stop="7"><span>Uplink</span></button>
+</nav>
+
+<div class="scroll-hint" id="scrollHint"><span>SCROLL TO FLY</span><i></i></div>
+
+<!-- ============ OVERLAYS ============ -->
+<main id="overlays">
+
+  <section class="ovl" data-stop="0" id="ovl-hero">
+    <div class="fly-layer" id="heroFly">
+    <p class="eyebrow">// MISSISSAUGA · ON · CANADA</p>
+    <h1 class="hero-name"><span>RANVIR</span><span class="accent">SINGH</span></h1>
+    <p class="hero-sub">Cybersecurity &amp; SOC Analyst — I watch the wire, triage the noise,<br class="bk"/> and hunt what's hiding in your logs.</p>
+    <div class="hero-tags">
+      <span>CompTIA Security+</span><span>SIEM · Splunk / QRadar</span><span>Incident Response</span>
+    </div>
+    </div>
+  </section>
+
+  <section class="ovl ovl-left" data-stop="1" id="ovl-about">
+    <p class="eyebrow">// SECTOR 02 — OPERATOR FILE</p>
+    <h2>The analyst<br/>behind the glass.</h2>
+    <p class="body">Junior SOC Analyst with a Postgraduate Certificate in Cybersecurity from Sault College — 4.0 GPA, President's Excellence Award. I build the things I monitor: detection rules, triage tooling, and a home lab that gets attacked on purpose.</p>
+    <div class="stat-row">
+      <div class="stat"><b>4.0</b><i>GPA · Sault College</i></div>
+      <div class="stat"><b>SEC+</b><i>CompTIA certified</i></div>
+      <div class="stat"><b>10</b><i>lab-built projects</i></div>
+    </div>
+  </section>
+
+  <section class="ovl ovl-right" data-stop="2" id="ovl-threat">
+    <p class="eyebrow">// SECTOR 03 — THREAT GRID</p>
+    <h2>Global noise,<br/>local signal.</h2>
+    <p class="body">Attack traffic is resolving into a Toronto SOC node. Drag the globe to scan — then <b>click the red packets to neutralize them</b> before they reach the perimeter.</p>
+    <p class="mono-note" id="threatFeed">[ feed ] awaiting telemetry…</p>
+  </section>
+
+  <section class="ovl" data-stop="3" id="ovl-skills">
+    <p class="eyebrow">// SECTOR 04 — CAPABILITY RING</p>
+    <h2 class="center">You are now inside the skill ring.</h2>
+    <p class="body center" id="skillsHint">Keep scrolling — the ring will deal each capability to you as a card. Click any card for the full readout.</p>
+    <div class="skill-dots" id="skillDots"></div>
+  </section>
+
+  <section class="ovl ovl-left" data-stop="4" id="ovl-xp">
+    <p class="eyebrow">// SECTOR 05 — FIELD LOG</p>
+    <h2>Hours on<br/>the wire.</h2>
+    <ul class="cred-list xp-list">
+      <li><b>IT Support Technician Intern — Trios College Business, Technology &amp; Healthcare</b><i>May 2025 – Aug 2025 · Brampton, ON</i>
+        <p>Resolved 15+ access and system issues weekly over chat and call at a 99% satisfaction rating. Handled IAM tickets — MFA failures, lockouts, login issues — in Microsoft Entra ID and Active Directory, closing 95% within SLA. Reviewed Windows Event Logs and endpoint issues, escalating 100% of critical security incidents, with every ticket documented in Jira Service Management.</p></li>
+      <li><b>Independent SOC Lab — Ongoing</b><i>2025 – present · Mississauga, ON</i>
+        <p>Run a three-VM attack/detect lab weekly: scripted attacks from Kali, detections in Splunk &amp; QRadar, findings written up as incident reports.</p></li>
+    </ul>
+    <p class="mono-note" id="xpStats">[ queue ] live tickets are orbiting the helix — click one to resolve it. RESOLVED 0 · SLA 100%</p>
+  </section>
+
+  <section class="ovl" data-stop="5" id="ovl-projects">
+    <p class="eyebrow center">// SECTOR 06 — DEPLOYED OPERATIONS</p>
+    <h2 class="center">Six monoliths. Six builds.</h2>
+    <p class="body center">Click a monolith to open its case file.</p>
+  </section>
+
+  <section class="ovl ovl-left" data-stop="6" id="ovl-certs">
+    <p class="eyebrow">// SECTOR 07 — CLEARANCE</p>
+    <h2>Credentials,<br/>field-tested.</h2>
+    <ul class="cred-list">
+      <li><b>CompTIA Security+</b><i>Threats, architecture, operations, governance</i></li>
+      <li><b>PG Cert. Cybersecurity — Sault College of Applied Arts and Technology</b><i>Jan 2024 – Aug 2025 · 4.0/4.0 GPA · President's Excellence Award</i></li>
+      <li><b>Bachelor of Computer Applications — Punjabi University Patiala</b><i>May 2019 – May 2022</i></li>
+      <li><b>Home SOC Lab</b><i>Kali ↔ Windows targets ↔ Splunk, attacked weekly</i></li>
+    </ul>
+  </section>
+
+  <section class="ovl" data-stop="7" id="ovl-contact">
+    <div class="uplink-wrap">
+    <p class="eyebrow center">// SECTOR 08 — UPLINK</p>
+    <h2 class="center">Open a channel.</h2>
+    <div class="incident" id="incident">
+      <div class="inc-head">// INCIDENT REPORT — <span id="incId">VISIT-0000</span><span class="inc-status" id="incStatus">ACTIVE</span></div>
+      <div class="inc-grid">
+        <div>SECTORS TRAVERSED<b id="incSect">1/8</b></div>
+        <div>THREATS NEUTRALIZED<b id="incKills">0</b></div>
+        <div>CAPABILITIES REVIEWED<b id="incSkills">0/14</b></div>
+        <div>TIME ON THE WIRE<b id="incTime">0:00</b></div>
+      </div>
+      <button id="closeBtn">▣ CLOSE INCIDENT</button>
+      <div class="inc-cta" id="incCta">
+        <p>Your incident is sealed — but the real ones never stop.</p>
+        <b>Bring me in to triage and close your company's threats.</b>
+      </div>
+    </div>
+    <div class="term" id="term">
+      <div class="term-head"><span></span><span></span><span></span><b>ranvir@soc:~</b></div>
+      <div class="term-body" id="termBody"></div>
+      <div class="term-input"><span class="prompt">$</span><input id="termInput" type="text" autocomplete="off" spellcheck="false" placeholder="type 'help'"/></div>
+    </div>
+    <div class="contact-row">
+      <a class="contact-card" href="https://github.com/RanvirSingh-Ronnie" target="_blank" rel="noopener">
+        <span class="cc-ico">⌥</span><span class="cc-label">GITHUB</span><span class="cc-sub">/RanvirSingh-Ronnie</span><i class="cc-arrow">↗</i></a>
+      <a class="contact-card" href="https://www.linkedin.com/in/ranvir-singh-saini" target="_blank" rel="noopener">
+        <span class="cc-ico">in</span><span class="cc-label">LINKEDIN</span><span class="cc-sub">connect</span><i class="cc-arrow">↗</i></a>
+      <a class="contact-card" href="mailto:ranvirsingh0064@gmail.com">
+        <span class="cc-ico">@</span><span class="cc-label">EMAIL</span><span class="cc-sub">say hello</span><i class="cc-arrow">↗</i></a>
+    </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- closure stamp -->
+<div id="stamp"><span>INCIDENT CLOSED</span><i>NO FURTHER ACTION REQUIRED · CASE FILE SEALED</i></div>
+
+<!-- ============ PROJECT MODAL ============ -->
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal-card">
+    <button class="modal-x" id="modalX" aria-label="Close">✕</button>
+    <p class="eyebrow" id="mTag">// CASE FILE</p>
+    <h3 id="mTitle">Project</h3>
+    <p class="body" id="mDesc"></p>
+    <div class="m-stack" id="mStack"></div>
+    <a class="m-link" id="mLink" href="#" target="_blank" rel="noopener">OPEN REPOSITORY ↗</a>
+  </div>
+</div>
+
+<div id="toast"><b id="toastTitle">ACHIEVEMENT</b><span id="toastBody"></span></div>
+
+<!-- scroll length driver -->
+<div id="track"></div>
+
+<!-- 3D engine: local lib/ first (works offline), CDN fallback if missing -->
+<script src="lib/three.min.js"></script>
+<script>window.THREE||document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"><\/script>')</script>
+<script src="lib/CopyShader.js"></script>
+<script>(window.THREE&&THREE.CopyShader)||document.write('<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/CopyShader.js"><\/script>')</script>
+<script src="lib/LuminosityHighPassShader.js"></script>
+<script>(window.THREE&&THREE.LuminosityHighPassShader)||document.write('<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/LuminosityHighPassShader.js"><\/script>')</script>
+<script src="lib/EffectComposer.js"></script>
+<script>(window.THREE&&THREE.EffectComposer)||document.write('<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/EffectComposer.js"><\/script>')</script>
+<script src="lib/RenderPass.js"></script>
+<script>(window.THREE&&THREE.RenderPass)||document.write('<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/RenderPass.js"><\/script>')</script>
+<script src="lib/ShaderPass.js"></script>
+<script>(window.THREE&&THREE.ShaderPass)||document.write('<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.js"><\/script>')</script>
+<script src="lib/UnrealBloomPass.js"></script>
+<script>(window.THREE&&THREE.UnrealBloomPass)||document.write('<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js"><\/script>')</script>
+<script src="script.js?v=4"></script>
+<!-- boot diagnostic: if the world didn't start, say exactly why instead of hanging -->
+<script>
+addEventListener("load", function(){
+  setTimeout(function(){
+    if(window.__RS_BOOTED){
+      // booted, but is it actually rendering frames?
+      setTimeout(function(){
+        if((window.__RS_FRAMES||0) > 5) return;
+        var d = document.createElement("div");
+        d.style.cssText = "position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:998;background:#0a1020;border:1px solid #ff2d55;color:#e8f2ff;font-family:monospace;font-size:12px;padding:10px 16px;max-width:90vw;text-align:center";
+        d.innerHTML = window.__RS_FRAME_ERR
+          ? "// RENDER ERROR: " + window.__RS_FRAME_ERR
+          : "// RENDERING STALLED — enable hardware acceleration in your browser settings (Settings → System → 'Use graphics acceleration'), then restart the browser.";
+        document.body.appendChild(d);
+      }, 2500);
+      return;
+    }
+    var why = !window.THREE
+      ? "three.js did not load. Make sure the lib/ folder sits next to index.html, or check your internet connection / ad-blocker."
+      : (window.__RS_ERROR
+        ? "Startup error: " + window.__RS_ERROR
+        : "script.js did not run. Make sure index.html, style.css, script.js and the lib/ folder are all in the same folder.");
+    document.body.innerHTML =
+      '<div style="position:fixed;inset:0;background:#04070f;color:#e8f2ff;display:flex;align-items:center;justify-content:center;font-family:monospace;padding:24px;text-align:center;z-index:999">'+
+      '<div><div style="color:#ff2d55;letter-spacing:.3em;margin-bottom:14px">// BOOT FAILURE</div>'+
+      '<div style="max-width:560px;line-height:1.7;color:#93a3bf">'+why+'</div></div></div>';
+  }, 2500);
+});
+</script>
+</body>
+</html>
