@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">Ranvir Singh cybersecurity portfolio</title>
+  <desc id="desc">Animated security operations banner with a matrix grid, connected nodes, and moving network packets.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#020617"/>
+      <stop offset="0.52" stop-color="#081426"/>
+      <stop offset="1" stop-color="#042f3b"/>
+    </linearGradient>
+    <radialGradient id="coreGlow">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M 36 0 L 0 0 0 36" fill="none" stroke="#164e63" stroke-width="1" stroke-opacity="0.38"/>
+    </pattern>
+    <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <path id="routeA" d="M80 278 C250 165 400 290 575 176 S920 72 1125 176"/>
+    <path id="routeB" d="M105 80 C270 205 390 92 585 204 S890 294 1090 220"/>
+    <path id="routeC" d="M205 320 C335 235 470 274 600 136 S850 122 1030 54"/>
+    <style>
+      .matrix { fill:#22d3ee; font:12px 'Courier New',monospace; opacity:.18; letter-spacing:4px; }
+      .route { fill:none; stroke:#22d3ee; stroke-width:1.4; stroke-opacity:.34; stroke-dasharray:8 12; }
+      .route-alt { fill:none; stroke:#38bdf8; stroke-width:1; stroke-opacity:.22; stroke-dasharray:3 13; }
+      .node { fill:#020617; stroke:#22d3ee; stroke-width:2; }
+      .small { font:600 13px 'Courier New',monospace; letter-spacing:3px; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="360" rx="18" fill="url(#background)"/>
+  <rect width="1200" height="360" rx="18" fill="url(#grid)"/>
+  <ellipse cx="600" cy="175" rx="410" ry="230" fill="url(#coreGlow)">
+    <animate attributeName="rx" values="370;430;370" dur="7s" repeatCount="indefinite"/>
+  </ellipse>
+
+  <g aria-hidden="true">
+    <text class="matrix" x="34" y="-20">01101 00110 11010 10101<animate attributeName="y" values="-20;390" dur="12s" repeatCount="indefinite"/></text>
+    <text class="matrix" x="150" y="-120">10110 01001 11100 00101<animate attributeName="y" values="-120;390" dur="15s" repeatCount="indefinite"/></text>
+    <text class="matrix" x="280" y="-70">00101 11101 01010 11000<animate attributeName="y" values="-70;390" dur="10s" repeatCount="indefinite"/></text>
+    <text class="matrix" x="835" y="-40">11001 00111 10100 01010<animate attributeName="y" values="-40;390" dur="13s" repeatCount="indefinite"/></text>
+    <text class="matrix" x="965" y="-140">01011 10110 00011 11100<animate attributeName="y" values="-140;390" dur="16s" repeatCount="indefinite"/></text>
+    <text class="matrix" x="1080" y="-85">11100 01001 10111 00110<animate attributeName="y" values="-85;390" dur="11s" repeatCount="indefinite"/></text>
+
+    <use href="#routeA" class="route"><animate attributeName="stroke-dashoffset" values="0;-120" dur="6s" repeatCount="indefinite"/></use>
+    <use href="#routeB" class="route-alt"><animate attributeName="stroke-dashoffset" values="0;-130" dur="8s" repeatCount="indefinite"/></use>
+    <use href="#routeC" class="route"><animate attributeName="stroke-dashoffset" values="0;-150" dur="7s" repeatCount="indefinite"/></use>
+
+    <g filter="url(#glow)">
+      <circle r="4" fill="#67e8f9"><animateMotion dur="4.8s" repeatCount="indefinite"><mpath href="#routeA"/></animateMotion></circle>
+      <circle r="3" fill="#38bdf8"><animateMotion dur="5.8s" begin="-2s" repeatCount="indefinite"><mpath href="#routeB"/></animateMotion></circle>
+      <circle r="4" fill="#2dd4bf"><animateMotion dur="6.2s" begin="-4s" repeatCount="indefinite"><mpath href="#routeC"/></animateMotion></circle>
+    </g>
+
+    <g>
+      <circle class="node" cx="80" cy="278" r="7"/><circle cx="80" cy="278" r="14" fill="none" stroke="#22d3ee" opacity=".55"><animate attributeName="r" values="8;24" dur="2.4s" repeatCount="indefinite"/><animate attributeName="opacity" values=".65;0" dur="2.4s" repeatCount="indefinite"/></circle>
+      <circle class="node" cx="105" cy="80" r="7"/><circle class="node" cx="205" cy="320" r="6"/>
+      <circle class="node" cx="575" cy="176" r="8"/><circle cx="575" cy="176" r="13" fill="none" stroke="#38bdf8" opacity=".5"><animate attributeName="r" values="9;28" dur="3s" repeatCount="indefinite"/><animate attributeName="opacity" values=".55;0" dur="3s" repeatCount="indefinite"/></circle>
+      <circle class="node" cx="1030" cy="54" r="6"/><circle class="node" cx="1090" cy="220" r="7"/><circle class="node" cx="1125" cy="176" r="7"/>
+    </g>
+
+    <rect x="0" y="0" width="1200" height="3" fill="#22d3ee" opacity=".55">
+      <animate attributeName="y" values="0;357;0" dur="7s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;.55;0" dur="7s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <g text-anchor="middle">
+    <text x="600" y="142" fill="#f8fafc" font-family="Arial,Helvetica,sans-serif" font-size="64" font-weight="800" letter-spacing="2">RANVIR SINGH</text>
+    <text x="600" y="188" fill="#22d3ee" font-family="'Courier New',monospace" font-size="21" font-weight="700" letter-spacing="5">CYBERSECURITY &amp; SOC ANALYST</text>
+    <rect x="304" y="218" width="592" height="42" rx="21" fill="#020617" fill-opacity=".78" stroke="#155e75"/>
+    <circle cx="330" cy="239" r="5" fill="#2dd4bf" filter="url(#glow)"><animate attributeName="opacity" values="1;.25;1" dur="1.6s" repeatCount="indefinite"/></circle>
+    <text x="615" y="244" fill="#cbd5e1" class="small">SIEM  //  DFIR  //  THREAT HUNTING  //  DETECTION ENGINEERING</text>
+    <text x="600" y="302" fill="#64748b" font-family="'Courier New',monospace" font-size="12" letter-spacing="4">MISSISSAUGA, ONTARIO  •  EVIDENCE-FIRST SECURITY OPERATIONS</text>
+  </g>
+
+  <rect x="1" y="1" width="1198" height="358" rx="17" fill="none" stroke="#22d3ee" stroke-opacity=".35" stroke-width="2"/>
+</svg>

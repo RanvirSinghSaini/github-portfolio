@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="120" viewBox="0 0 1200 120" role="img" aria-labelledby="title desc">
+  <title id="title">Cybersecurity network footer</title>
+  <desc id="desc">Animated network line with moving packets and security nodes.</desc>
+  <defs>
+    <linearGradient id="footerBg" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#020617"/><stop offset=".5" stop-color="#0f172a"/><stop offset="1" stop-color="#042f3b"/></linearGradient>
+    <filter id="footerGlow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <path id="footerRoute" d="M40 70 C210 20 325 104 490 58 S770 20 920 66 S1090 92 1160 50"/>
+  </defs>
+  <rect width="1200" height="120" rx="14" fill="url(#footerBg)"/>
+  <use href="#footerRoute" fill="none" stroke="#22d3ee" stroke-opacity=".42" stroke-width="1.5" stroke-dasharray="8 12"><animate attributeName="stroke-dashoffset" values="0;-120" dur="6s" repeatCount="indefinite"/></use>
+  <g fill="#020617" stroke="#22d3ee" stroke-width="2"><circle cx="40" cy="70" r="6"/><circle cx="490" cy="58" r="7"/><circle cx="920" cy="66" r="7"/><circle cx="1160" cy="50" r="6"/></g>
+  <g filter="url(#footerGlow)"><circle r="4" fill="#67e8f9"><animateMotion dur="5.5s" repeatCount="indefinite"><mpath href="#footerRoute"/></animateMotion></circle><circle r="3" fill="#2dd4bf"><animateMotion dur="5.5s" begin="-2.75s" repeatCount="indefinite"><mpath href="#footerRoute"/></animateMotion></circle></g>
+  <text x="600" y="93" text-anchor="middle" fill="#64748b" font-family="'Courier New',monospace" font-size="12" letter-spacing="4">SECURE CHANNEL  //  MONITORING CONTINUES</text>
+  <rect x="1" y="1" width="1198" height="118" rx="13" fill="none" stroke="#164e63"/>
+</svg>
