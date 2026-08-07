@@ -1,10 +1,9 @@
 <div align="center">
 
-![Animated cyber header](https://capsule-render.vercel.app/api?type=waving&height=230&color=0:020617,45:0f172a,100:06b6d4&text=Ranvir%20Singh&fontColor=e2e8f0&fontSize=58&fontAlignY=38&desc=Cybersecurity%20%26%20SOC%20Analyst%20%7C%20Mississauga%2C%20Ontario&descAlignY=59&animation=fadeIn)
+![Ranvir Singh animated cyber operations header](./assets/cyber-grid.svg)
 
-[![Animated role introduction](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&duration=2800&pause=900&color=22D3EE&center=true&vCenter=true&width=900&lines=SOC+monitoring+%E2%86%92+triage+%E2%86%92+incident+response;Detection+engineering+%7C+DFIR+%7C+Threat+analysis;Building+reproducible%2C+evidence-first+security+labs)](https://git.io/typing-svg)
 
-[![3D Portfolio](https://img.shields.io/badge/ENTER_3D_PORTFOLIO-00E5FF?style=for-the-badge&logo=googlechrome&logoColor=001018)](https://ranvir-singh-cybersecurity-portfolio.h4ckerr.chatgpt.site)
+[![3D Portfolio](https://img.shields.io/badge/ENTER_3D_PORTFOLIO-00E5FF?style=for-the-badge&logo=googlechrome&logoColor=001018)](https://ranvirsingh-ronnie.github.io/github-portfolio/)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/ranvir-singh-saini)
 [![Email](https://img.shields.io/badge/Email-Contact-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:ranvirsingh0064@gmail.com)
 [![Repositories](https://img.shields.io/badge/GitHub-Project_Labs-181717?style=for-the-badge&logo=github)](https://github.com/RanvirSingh-Ronnie?tab=repositories)
@@ -193,6 +192,6 @@ All attack simulations are performed only in isolated, authorized lab environmen
 
 **Open to cybersecurity, SOC, incident response and security operations opportunities.**
 
-![Animated cyber footer](https://capsule-render.vercel.app/api?type=waving&height=120&section=footer&color=0:06b6d4,55:0f172a,100:020617&animation=twinkling)
+![Animated cybersecurity network footer](./assets/cyber-footer.svg)
 
 </div>
