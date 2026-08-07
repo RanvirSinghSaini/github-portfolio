@@ -3,10 +3,10 @@
 ![Ranvir Singh animated cyber operations header](./assets/cyber-grid.svg)
 
 
-[![3D Portfolio](https://img.shields.io/badge/ENTER_3D_PORTFOLIO-00E5FF?style=for-the-badge&logo=googlechrome&logoColor=001018)](https://ranvirsingh-ronnie.github.io/github-portfolio/)
+[![3D Portfolio](https://img.shields.io/badge/ENTER_3D_PORTFOLIO-00E5FF?style=for-the-badge&logo=googlechrome&logoColor=001018)](https://ranvirsinghsaini.github.io/github-portfolio/)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/ranvir-singh-saini)
 [![Email](https://img.shields.io/badge/Email-Contact-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:ranvirsingh0064@gmail.com)
-[![Repositories](https://img.shields.io/badge/GitHub-Project_Labs-181717?style=for-the-badge&logo=github)](https://github.com/RanvirSingh-Ronnie?tab=repositories)
+[![Repositories](https://img.shields.io/badge/GitHub-Project_Labs-181717?style=for-the-badge&logo=github)](https://github.com/RanvirSinghSaini?tab=repositories)
 
 </div>
 
@@ -135,17 +135,17 @@ Every repository below is public and linked now. Status labels deliberately dist
 
 | # | Repository | Mission | Status |
 |---:|---|---|---|
-| 01 | [SOC Monitoring & Incident Response](https://github.com/RanvirSingh-Ronnie/soc-monitoring-incident-response) | Windows/Sysmon telemetry, SIEM triage, playbooks and case evidence | 🟡 Evidence pending |
-| 02 | [Threat Intel IOC Checker](https://github.com/RanvirSingh-Ronnie/threat-intel-ioc-checker) | Explainable IOC enrichment and analyst-ready exports | 🟡 Validation pending |
-| 03 | [SIEM Detection Engineering](https://github.com/RanvirSingh-Ronnie/siem-detection-engineering) | Version-controlled detections, fixtures, CI and ATT&CK coverage | 🟡 SIEM proof pending |
-| 04 | [Windows Event Hunter](https://github.com/RanvirSingh-Ronnie/windows-event-hunter) | Endpoint hunting across logons, services, tasks and process chains | ⚪ Planned |
-| 05 | [Identity Attack & Detection Lab](https://github.com/RanvirSingh-Ronnie/identity-attack-detection-lab) | Authorized AD simulations paired with detection and remediation | ⚪ Planned |
-| 06 | [Home SOC Lab Blueprint](https://github.com/RanvirSingh-Ronnie/home-soc-lab-blueprint) | Reproducible Windows/Linux/SIEM lab infrastructure | 🔵 Lab build in progress |
-| 07 | [Phishing Triage & Email Forensics](https://github.com/RanvirSingh-Ronnie/phishing-triage-email-forensics) | Headers, authentication, IOC extraction and analyst reporting | ⚪ Planned |
-| 08 | [Network Detection & Threat Hunting Lab](https://github.com/RanvirSingh-Ronnie/network-detection-threat-hunting-lab) | Zeek, Suricata, Wireshark, PCAP replay and hunt reports | ⚪ Planned |
-| 09 | [SOC Automation & Incident Orchestration](https://github.com/RanvirSingh-Ronnie/soc-automation-incident-orchestration) | Enrichment, case flow, approval gates and audit trails | ⚪ Planned |
-| 10 | [Ransomware Detection & Response Lab](https://github.com/RanvirSingh-Ronnie/ransomware-detection-response-lab) | Harmless simulation, timelines, containment and recovery validation | ⚪ Planned |
-| 11 | [Splunk SOC Analyst Level 1](https://github.com/RanvirSingh-Ronnie/splunk-soc-analyst-level-1) | Windows/Sysmon lab plus BOTS v1 investigation series | 🔵 In progress |
+| 01 | [SOC Monitoring & Incident Response](https://github.com/RanvirSinghSaini/soc-monitoring-incident-response) | Windows/Sysmon telemetry, SIEM triage, playbooks and case evidence | 🟡 Evidence pending |
+| 02 | [Threat Intel IOC Checker](https://github.com/RanvirSinghSaini/threat-intel-ioc-checker) | Explainable IOC enrichment and analyst-ready exports | 🟡 Validation pending |
+| 03 | [SIEM Detection Engineering](https://github.com/RanvirSinghSaini/siem-detection-engineering) | Version-controlled detections, fixtures, CI and ATT&CK coverage | 🟡 SIEM proof pending |
+| 04 | [Windows Event Hunter](https://github.com/RanvirSinghSaini/windows-event-hunter) | Endpoint hunting across logons, services, tasks and process chains | ⚪ Planned |
+| 05 | [Identity Attack & Detection Lab](https://github.com/RanvirSinghSaini/identity-attack-detection-lab) | Authorized AD simulations paired with detection and remediation | ⚪ Planned |
+| 06 | [Home SOC Lab Blueprint](https://github.com/RanvirSinghSaini/home-soc-lab-blueprint) | Reproducible Windows/Linux/SIEM lab infrastructure | 🔵 Lab build in progress |
+| 07 | [Phishing Triage & Email Forensics](https://github.com/RanvirSinghSaini/phishing-triage-email-forensics) | Headers, authentication, IOC extraction and analyst reporting | ⚪ Planned |
+| 08 | [Network Detection & Threat Hunting Lab](https://github.com/RanvirSinghSaini/network-detection-threat-hunting-lab) | Zeek, Suricata, Wireshark, PCAP replay and hunt reports | ⚪ Planned |
+| 09 | [SOC Automation & Incident Orchestration](https://github.com/RanvirSinghSaini/soc-automation-incident-orchestration) | Enrichment, case flow, approval gates and audit trails | ⚪ Planned |
+| 10 | [Ransomware Detection & Response Lab](https://github.com/RanvirSinghSaini/ransomware-detection-response-lab) | Harmless simulation, timelines, containment and recovery validation | ⚪ Planned |
+| 11 | [Splunk SOC Analyst Level 1](https://github.com/RanvirSinghSaini/splunk-soc-analyst-level-1) | Windows/Sysmon lab plus BOTS v1 investigation series | 🔵 In progress |
 
 > Portfolio project links continue to open the matching **Projects Underway** page until each repository contains reproducible implementation and sanitized evidence.
 
@@ -179,8 +179,8 @@ Every repository below is public and linked now. Status labels deliberately dist
 
 <div align="center">
 
-![Ranvir's GitHub stats](https://github-readme-stats.vercel.app/api?username=RanvirSingh-Ronnie&show_icons=true&hide_border=true&bg_color=020617&title_color=22d3ee&icon_color=22d3ee&text_color=cbd5e1)
-![GitHub streak](https://streak-stats.demolab.com?user=RanvirSingh-Ronnie&hide_border=true&background=020617&ring=22D3EE&fire=F97316&currStreakLabel=22D3EE&sideLabels=CBD5E1&currStreakNum=E2E8F0&sideNums=E2E8F0&dates=64748B)
+![Ranvir's GitHub stats](https://github-readme-stats.vercel.app/api?username=RanvirSinghSaini&show_icons=true&hide_border=true&bg_color=020617&title_color=22d3ee&icon_color=22d3ee&text_color=cbd5e1)
+![GitHub streak](https://streak-stats.demolab.com?user=RanvirSinghSaini&hide_border=true&background=020617&ring=22D3EE&fire=F97316&currStreakLabel=22D3EE&sideLabels=CBD5E1&currStreakNum=E2E8F0&sideNums=E2E8F0&dates=64748B)
 
 </div>
 
