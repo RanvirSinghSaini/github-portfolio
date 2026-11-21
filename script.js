@@ -789,6 +789,7 @@ mLink.addEventListener("click", e=>{
 function openSkillModal(i){
   const s = SKILLS[i];
   skillModalMode = true;
+  document.getElementById("statusLink").style.display = "none";
   document.getElementById("mTag").textContent = `// CAPABILITY FILE ${String(i+1).padStart(2,"0")} / ${K}`;
   document.getElementById("mTitle").textContent = s.n;
   document.getElementById("mDesc").textContent = s.d;
@@ -803,8 +804,12 @@ function openModal(i){
   skillModalMode = false;
   document.getElementById("mTag").textContent = p.tag;
   document.getElementById("mTitle").textContent = p.t;
-  document.getElementById("mDesc").textContent = p.d;
-  mLink.href = p.link; mLink.setAttribute("target","_self");
+  document.getElementById("mDesc").textContent = (i === 0 ? "Build guide available. Validation pending. " : "Planned scope. ") + p.d;
+  const statusLink = document.getElementById("statusLink");
+  statusLink.style.display = "";
+  statusLink.href = p.link;
+  mLink.href = "https://github.com/RanvirSinghSaini/" + p.link.split("#")[1];
+  mLink.setAttribute("target","_blank");
   mLink.textContent = "OPEN REPOSITORY ↗";
   document.getElementById("mStack").innerHTML = p.s.map(x=>`<span>${x}</span>`).join("");
   document.getElementById("modal").classList.add("open");
