@@ -9,7 +9,7 @@
 addEventListener("error", e => { if(!window.__RS_BOOTED) window.__RS_ERROR = e.message; });
 
 const PRM = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-let motionOn = true;   // animations always run by default; the chip lets PRM users turn them off
+let motionOn = !PRM;
 const MOBILE = Math.min(window.innerWidth, window.innerHeight) < 700;
 
 /* ---------------- data ---------------- */
@@ -270,6 +270,7 @@ const arcs = [];
     hit.userData.packet = pk;
     pk.add(hit);
     pk.userData = { curve, off:Math.random(), speed:.10+Math.random()*.12, hostile, line, hit, cool:0 };
+    pk.position.copy(curve.getPoint(pk.userData.off));
     globe.add(pk); arcs.push(pk);
   }
 }
@@ -534,6 +535,110 @@ PROJECTS.forEach((p,i)=>{
   scene.add(grp); monoliths.push(grp);
 });
 
+// Floor-mounted light guides. Each sector uses one line mesh, with a shared
+// clock moving highlights along the measured length of each circuit.
+const signalTime = { value: 0 };
+function circuitMesh(paths) {
+  const vertices = [], distances = [];
+  paths.forEach((points, lane) => {
+    let distance = lane * 1.73;
+    for (let i = 1; i < points.length; i++) {
+      const start = points[i - 1], end = points[i];
+      vertices.push(...start, ...end);
+      distances.push(distance);
+      distance += Math.hypot(end[0]-start[0], end[1]-start[1], end[2]-start[2]);
+      distances.push(distance);
+    }
+  });
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+  geometry.setAttribute('travel', new THREE.Float32BufferAttribute(distances, 1));
+  const material = new THREE.ShaderMaterial({
+    uniforms: { seconds: signalTime }, transparent: true, depthWrite: false,
+    blending: THREE.AdditiveBlending,
+    vertexShader: `
+      attribute float travel;
+      varying float along;
+      varying float depth;
+      void main() {
+        along = travel;
+        vec4 view = modelViewMatrix * vec4(position, 1.0);
+        depth = -view.z;
+        gl_Position = projectionMatrix * view;
+      }`,
+    fragmentShader: `
+      uniform float seconds;
+      varying float along;
+      varying float depth;
+      void main() {
+        float phase = fract((along - seconds * 1.8) / 9.0);
+        float pulse = smoothstep(0.64, 0.96, phase) * (1.0 - smoothstep(0.96, 1.0, phase));
+        vec3 color = mix(vec3(0.01, 0.42, 0.62), vec3(0.50, 1.0, 0.86), pulse);
+        gl_FragColor = vec4(color, (0.40 + pulse * 0.50) * (1.0 - smoothstep(24.0, 72.0, depth)));
+      }`
+  });
+  return new THREE.LineSegments(geometry, material);
+}
+
+// Etched radial traces sit underneath the entry core, clear of the nameplate.
+const launchPaths = [];
+for (let spoke = 0; spoke < (MOBILE ? 8 : 16); spoke++) {
+  const angle = spoke * Math.PI * 2 / (MOBILE ? 8 : 16);
+  const polar = (r, offset) => [Math.cos(angle + offset) * r, -2.05, Math.sin(angle + offset) * r];
+  launchPaths.push([polar(1.2, 0), polar(2.3, 0), polar(3.1, .12), polar(4.8, .12)]);
+}
+const launchCircuit = circuitMesh(launchPaths);
+scene.add(launchCircuit);
+
+// Twin signal buses feed the six existing project plinths.
+const busPaths = [];
+monoliths.forEach((plinth, i) => {
+  const { x, z } = plinth.position;
+  const lane = Math.sign(x) * (1.8 + Math.floor(i / 2) * .2);
+  busPaths.push([[lane, -2.08, -95], [lane, -2.08, z + 2.4],
+    [x, -2.08, z + .6], [x, -2.08, z], [x, -1, z]]);
+});
+const projectBus = circuitMesh(busPaths);
+scene.add(projectBus);
+
+// A translucent scan sweeps the globe. Neutralizing a packet sends a ring
+// across the globe from its actual interception point.
+const radar = new THREE.Mesh(new THREE.SphereGeometry(4.26, MOBILE ? 32 : 56, MOBILE ? 20 : 36),
+  new THREE.ShaderMaterial({
+    transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+    uniforms: { seconds: signalTime, hitTime: {value: -10}, hitDirection: {value: new THREE.Vector3(0,1,0)} },
+    vertexShader: `
+      varying vec3 direction;
+      varying vec3 viewNormal;
+      varying vec3 toEye;
+      void main() {
+        direction = normal;
+        viewNormal = normalMatrix * normal;
+        vec4 view = modelViewMatrix * vec4(position, 1.0);
+        toEye = -view.xyz;
+        gl_Position = projectionMatrix * view;
+      }`,
+    fragmentShader: `
+      uniform float seconds;
+      uniform float hitTime;
+      uniform vec3 hitDirection;
+      varying vec3 direction;
+      varying vec3 viewNormal;
+      varying vec3 toEye;
+      void main() {
+        vec3 n = normalize(direction);
+        float sweep = fract((atan(n.z, n.x) - seconds * 0.42) / 6.2831853);
+        float beam = smoothstep(.91, .999, sweep);
+        float rim = pow(1.0 - clamp(dot(normalize(viewNormal), normalize(toEye)), 0.0, 1.0), 2.8);
+        float age = seconds - hitTime;
+        float angle = acos(clamp(dot(n, hitDirection), -1.0, 1.0));
+        float wave = (1.0 - smoothstep(.015, .075, abs(angle - age * 1.7))) * (1.0 - smoothstep(.15, 1.7, age));
+        vec3 color = mix(vec3(.035, .60, .86), vec3(.27, 1.0, .55), wave);
+        gl_FragColor = vec4(color, min(.8, .32 * rim + .23 * beam + .62 * wave));
+      }`
+  }));
+globe.add(radar);
+
 /* =====================================================
    SECTOR 6 — CLEARANCE SHIELD  (z ≈ -170)
    ===================================================== */
@@ -738,6 +843,10 @@ function neutralize(pk){
   const u = pk.userData;
   if(!u.hostile) return;
   u.hostile = false; u.cool = 6;
+  if (motionOn) {
+    radar.material.uniforms.hitDirection.value.copy(pk.position).normalize();
+    radar.material.uniforms.hitTime.value = signalTime.value;
+  }
   pk.material.color.setHex(C.green); u.line.material.color.setHex(C.green);
   pk.scale.setScalar(2.6); // pop, eased back down in the loop
   kills++;
@@ -1042,6 +1151,10 @@ function frameBody(){
   // camera along path (weighted timeline: ring sector holds for the carousel)
   const m = mapScroll(prog);
   const seg = m.seg, c = m.c, inHold = c >= 0;
+  launchCircuit.visible = seg < 1.5;
+  radar.visible = seg > 1.2 && seg < 2.9;
+  projectBus.visible = seg > 4.25 && seg < 6.25;
+  if (motionOn) signalTime.value += dt;
   const i = Math.min(N-2, Math.floor(seg));
   const f = smooth(seg - i);
   v0.fromArray(STOPS[i].p);   v1.fromArray(STOPS[i+1].p);   v0.lerp(v1, f);
