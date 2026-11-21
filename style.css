@@ -346,3 +346,9 @@ body.defcon .hud-status i{background:var(--red);box-shadow:0 0 8px var(--red)}
 .skill-dots i.seen{border-color:var(--green);background:var(--green);opacity:.7;box-shadow:0 0 6px var(--green)}
 .skill-dots i.active{border-color:var(--cyan);background:var(--cyan);opacity:1;box-shadow:0 0 12px var(--cyan);transform:rotate(45deg) scale(1.5)}
 @media (max-width:760px){.skill-dots{max-width:280px;gap:6px}.skill-dots i{width:6px;height:6px}}
+
+.quick-links { display:flex; flex-wrap:wrap; gap:.5rem 1.2rem; margin-top:1rem; }
+.breach .quick-links { justify-content:center; }
+.quick-links a { color:var(--ice); font:12px/1.5 var(--mono); text-underline-offset:4px; }
+.quick-links a:hover, .quick-links a:focus-visible { color:var(--cyan); }
+.quick-links a:focus-visible { outline:2px solid currentColor; outline-offset:4px; }
